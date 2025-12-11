@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="row">
+        <div class="col-12 text-end">
+            <button type="button" id="btnAddNewOrder" class="btn btn-primary mt-3" data-toggle="modal" data-target="#addOrderModal">Add Order</button>
+        </div>
+        <div class="col-12 table-responsive">
+            <table id="myDataTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">OrderNo</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addOrderModal" tabindex="-1" role="dialog" aria-labelledby="addOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addOrderModalLabel">New order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="orderForm" method="post" autocomplete="off">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="customerName" class="col-form-label">Customer Name:</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName">
+                        </div>
+                        <div class="form-group">
+                            <label for="orderDate" class="col-form-label">Date:</label>
+                        <input type="datetime-local" class="form-control" id="orderDate" name="orderDate" />
+                        </div>
+                        <div class="12">
+                            <div class="col-12 m-3 text-end">
+                                <button type="button" class="btn btn-outline-info" id="btnAddNewOrderHistory">Add New</button>
+                            </div>
+                        </div>
+                        <div class="12">
+                        <div class="col-12 table-responsive">
+                                <table id="myEditDataTable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Total Amount</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save"/>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editOrderModal" tabindex="-1" role="dialog" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editOrderModalLabel">New order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editOrderForm" method="post" autocomplete="off">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="id" class="col-form-label">id:</label>
+                        <input type="hidden" class="form-control" id="id" name="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerName" class="col-form-label">Customer Name:</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderDate" class="col-form-label">Date:</label>
+                        <input type="datetime-local" class="form-control" id="orderDate" name="orderDate" />
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId" class="col-form-label">Category:</label>
+                        <select class="form-select" aria-label="Default select example" id="categoryId" name="categoryId">
+                           
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemId" class="col-form-label">Item:</label>
+                        <select class="form-select" aria-label="Default select example" id="itemId" name="itemId">
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="text" class="form-control" id="price" name="price" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="qty" class="col-form-label">QTY:</label>
+                        <input type="number" min="1" class="form-control" id="qty" name="qty" />
+                    </div>
+                    <div class="form-group">
+                        <label for="totalAmount" class="col-form-label">Total Amount:</label>
+                        <input type="text" class="form-control" id="totalAmount" name="totalAmount" readonly />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Save changes" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Order/index.js"></script>
+    <script src="/js/Order/addOrder.js"></script>
+    <script src="/js/Order/editOrderjs.js"></script>
+}
